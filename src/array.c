@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:19:05 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/05 14:09:41 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:16:23 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,19 @@ char	*one_str(char *argvone, t_game *g, int fd, int x)
 	x = g->lines - 1;
 	fd = open(argvone, O_RDONLY);
 	if (fd < 0 || fd > 1023)
-		display_error(g, -5);
+		display_error(g, 5);
 	str = get_next_line(fd);
 	if (!str || (read(fd, NULL, 0) == -1))
-		display_error(g, -5);
+		display_error(g, 5);
 	while (x != 0)
 	{
 		tmp = str;
 		gnl = get_next_line(fd);
 		if (!gnl)
-			display_error(g, -5);
+			display_error(g, 5);
 		str = ft_strjoin(tmp, gnl);
 		if (!str)
-			display_error(g, -5);
+			display_error(g, 5);
 		free(tmp);
 		free(gnl);
 		x--;
@@ -85,6 +85,6 @@ char	**ft_array(char *str, t_game *g)
 
 	array = ft_split(str, '\n');
 	if (!array)
-		display_error(g, -5);
+		display_error(g, 5);
 	return (array);
 }

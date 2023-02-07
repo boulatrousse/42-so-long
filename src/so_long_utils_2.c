@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:32:33 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/05 16:55:24 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/07 14:17:09 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_exit(t_game *g)
 void	display_error(t_game *g, int x)
 {
 	if (x == 1)
-		ft_putstr_fd("Error\nRows are invalid.\n", STDERR_FILENO);
+		ft_putstr_fd("Error\nInvalid rows or lines.\n", STDERR_FILENO);
 	else if (x < 0)
 		ft_errors(x);
 	else if (x == 3)
