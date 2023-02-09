@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 10:35:56 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/01/30 16:49:51 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/09 10:55:46 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,6 @@ int	col_count(char **array)
 		i++;
 	}
 	return (count);
-}
-
-void	ft_col_coord(char **array, t_col *col)
-{
-	while (array[col->x])
-	{
-		while (array[col->x][col->y])
-		{
-			if (array[col->x][col->y] == 'C')
-				return ;
-			col->y++;
-		}
-		col->y = 0;
-		col->x++;
-	}
 }
 
 void	init_struct_collec(t_game *g, t_col *col, char **array)

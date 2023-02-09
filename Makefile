@@ -19,6 +19,8 @@ SRC			 			= so_long.c \
 							so_long_utils_2.c \
 							images.c \
 							init.c \
+							coord.c \
+							errors.c \
 							
 OBJECTS			    	= $(SRC:%.c=$(BUILD_DIR)%.o)
 	

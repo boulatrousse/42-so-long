@@ -6,11 +6,17 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:18:32 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/05 16:10:57 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/09 11:00:34 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	ft_close_win(t_game *g)
+{
+	ft_exit(g);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {

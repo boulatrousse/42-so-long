@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:15:15 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/05 16:52:30 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/09 11:12:54 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,32 +75,35 @@ int	ft_count_rows(char *argvone, int lines, int fd, int i)
 	return (i);
 }
 
-void	free_array(char **array)
+int	collectible(t_game *g, int i, int j)
 {
-	int		i;
+	int		x;
 
-	i = 0;
-	if (array)
+	x = 0;
+	while (g->array[i])
 	{
-		while (array[i])
+		while (g->array[i][j])
 		{
-			free(array[i]);
-			i++;
+			if (g->array[i][j] == 'C')
+				x++;
+			j++;
 		}
-		free(array);
+		j = 0;
+		i++;
 	}
-	else
-		return ;
+	return (x);
 }
 
-void	ft_errors(int x)
+void	ft_exit(t_game *g)
 {
-	if (x == -1)
-		ft_putstr_fd("Error\nCheck the letters E, C or P.\n", STDERR_FILENO);
-	if (x == -2)
-		ft_putstr_fd("Error\nThere's an error in the walls.\n", STDERR_FILENO);
-	if (x == -3)
-		ft_putstr_fd("Error\nUnknown letter in the map.\n", STDERR_FILENO);
-	if (x == -4)
-		ft_putstr_fd("Error\nWrong map format.\n", STDERR_FILENO);
+	if (g->str)
+		free(g->str);
+	if (g->array)
+		free_array(g->array);
+	ft_clear_images(g);
+	mlx_clear_window(g->mlx, g->window);
+	mlx_destroy_window(g->mlx, g->window);
+	mlx_destroy_display(g->mlx);
+	free(g->mlx);
+	exit(EXIT_SUCCESS);
 }

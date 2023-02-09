@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:16:45 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/05 16:47:31 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/09 11:13:34 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,32 +68,40 @@ typedef struct s_game
 
 //---------------------- ARRAY ----------------------
 
-void	ft_exit_coord(t_game *g, int i, int j);
-int		collectible(t_game *g, int i, int j);
+void	free_array(char **array);
 char	*one_str(char *argvone, t_game *g, int fd, int x);
 char	**ft_array(char *str, t_game *g);
 
 //------------------ ERRORS & MAP -------------------
 
-void	display_error(t_game *g, int x);
 int		check_map(char **array, char *argvone, int lines);
+void	display_error(t_game *g, int x);
 void	ft_errors(int x);
+
+//--------------------- COORD -----------------------
+
+void	ft_exit_coord(t_game *g, int i, int j);
+void	ft_coord_perso(t_game *g);
+void	ft_col_coord(char **array, t_col *col);
 
 //--------------------- MOVES -----------------------
 
 int		ft_moves(int key_code, t_game *g);
 
-//--------------------- WINDOW ----------------------
+//--------------------- INIT ----------------------
 
-void	window_display(t_game *game, int i, int j);
 void	init_struct(t_game *game, char *argvone);
-int		ft_close_win(t_game *g);
+
+//--------------------- IMAGES ---------------------
+
+void	check_images(t_game *game);
+void	init_images(t_game *game);
 void	ft_clear_images(t_game *game);
+void	window_display(t_game *game, int i, int j);
 
 //--------------------- PATH FINDING -----------------
 
 int		col_count(char **array);
-void	ft_col_coord(char **array, t_col *col);
 void	init_struct_collec(t_game *g, t_col *col, char **array);
 int		ft_check_col(char **array, t_col *col);
 int		ft_pec(t_game *g, char **array);
@@ -106,10 +114,12 @@ int		path_manager_e(t_game *g);
 
 int		char_is_ok(int c);
 int		is_charset(int c);
-void	ft_exit(t_game *g);
+int		is_charset2(int c, t_col *col);
 int		ft_strlen_sl(char *str);
 int		ft_count_lines(char *argvone);
 int		ft_count_rows(char *argvone, int lines, int fd, int i);
-void	free_array(char **array);
+int		collectible(t_game *g, int i, int j);
+void	ft_exit(t_game *g);
+int		ft_close_win(t_game *g);
 
 #endif
