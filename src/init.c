@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:32:49 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/09 10:55:22 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:18:01 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 static void	init_struct_bis(t_game *game, char *argvone)
 {
 	game->lines = ft_count_lines(argvone);
+	if (game->lines == -1)
+		display_error(game, -5);
 	if (game->lines == 1)
 		display_error(game, 1);
 	game->rows = ft_count_rows(argvone, game->lines - 1, 0, 0);

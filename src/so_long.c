@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:18:32 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/09 11:00:34 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:09:14 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ int	main(int argc, char **argv)
 	t_game		game;
 
 	if (argc == 1)
-	{
 		ft_putstr_fd("Error\nToo few arguments.\n", STDERR_FILENO);
-	}
 	if (argc == 2)
 	{
 		init_struct(&game, argv[1]);
@@ -33,5 +31,7 @@ int	main(int argc, char **argv)
 		mlx_hook(game.window, 17, 1L << 17, ft_close_win, &game);
 		mlx_loop(game.mlx);
 	}
+	if (argc > 2)
+		ft_putstr_fd("Error\nToo many arguments.\n", STDERR_FILENO);
 	return (0);
 }

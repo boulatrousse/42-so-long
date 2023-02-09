@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:15:15 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/09 11:12:54 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:16:47 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_count_lines(char *argvone)
 	count = 0;
 	fd = open(argvone, O_RDONLY);
 	if (fd < 0 || fd > 1023)
-		exit(EXIT_FAILURE);
+		return (-1);
 	str = get_next_line(fd);
 	if (str == NULL)
 		exit(EXIT_FAILURE);

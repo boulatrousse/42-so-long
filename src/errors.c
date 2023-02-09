@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:05:46 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/09 11:13:08 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/09 13:18:40 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,6 @@ void	ft_errors(int x)
 		ft_putstr_fd("Error\nUnknown letter in the map.\n", STDERR_FILENO);
 	if (x == -4)
 		ft_putstr_fd("Error\nWrong map format.\n", STDERR_FILENO);
+	if (x == -5)
+		ft_putstr_fd("Error\nMap doesn't exist.\n", STDERR_FILENO);
 }
