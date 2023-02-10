@@ -8,7 +8,7 @@ HEADER_DIR				= header/
 HEADER_FILE				= so_long.h
 
 DIR						= src/
-SRC			 			= so_long.c \
+SRC			 			= main.c \
 							array.c \
 							check_map.c \
 							moves.c \
@@ -36,9 +36,6 @@ CLEAR					= clear
 
 MINILIB					= libmlx.a
 
-# MINILIB_DIR				= minilibx_macos/
-# MAC						= -framework OpenGL -framework AppKit 
-
 MINILIB_DIR				= minilibx_linux/
 LINUX					= -Lminilibx_linux -L/usr/lib -Iminilibx_linux -lXext -lX11 -lm -lz
 
@@ -55,10 +52,10 @@ clear:
 						$(CLEAR)
 						
 $(NAME): 				$(OBJECTS) $(LIB_DIR)$(LIBFT)
-						$(GCC) $(OBJECTS) -o $(NAME) $(LIB_DIR)$(LIBFT) $(MINILIB_DIR)$(MINILIB) ft_printf/libftprintf.a get_next_line/gnl.a $(MAC) $(LINUX) -g
+						$(GCC) $(OBJECTS) -o $(NAME) $(LIB_DIR)$(LIBFT) $(MINILIB_DIR)$(MINILIB) ft_printf/libftprintf.a get_next_line/gnl.a $(LINUX) -g
 
 sanitize :				$(OBJECTS) $(LIB_DIR)$(LIBFT)
-						$(GCC) $(SANITIZE) $(OBJECTS) -o $(NAME) $(LIB_DIR)$(LIBFT) $(MINILIB_DIR)$(MINILIB) ft_printf/libftprintf.a get_next_line/gnl.a $(MAC) $(LINUX)
+						$(GCC) $(SANITIZE) $(OBJECTS) -o $(NAME) $(LIB_DIR)$(LIBFT) $(MINILIB_DIR)$(MINILIB) ft_printf/libftprintf.a get_next_line/gnl.a $(LINUX)
 
 lib:
 						@make -C $(LIB_DIR)
