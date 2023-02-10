@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:05:46 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/09 13:25:09 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/10 10:03:08 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	display_error(t_game *g, int x)
 		ft_putstr_fd("Error\nYou can't reach a collectible.\n", STDERR_FILENO);
 	else if (x == 5)
 		ft_putstr_fd("Error\nMalloc error.\n", STDERR_FILENO);
-	if (x > 1)
+	if (x != 1 && x != -5)
 	{
 		free(g->str);
 		free_array(g->array);
