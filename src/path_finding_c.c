@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 10:14:07 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/09 10:47:30 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/11 13:38:35 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ int	path_manager_c(t_game *g)
 	{
 		ft_col_coord(array, &col);
 		if (ft_check_col(array, &col) == -1 || \
-			path_finder_c(g, &col, array) == -1)
+			path_finder_c(g, &col, array) == -1 || ft_pec(g, array) == -1)
 		{
 			free(strr);
 			free_array(array);

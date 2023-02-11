@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 11:45:50 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/05 16:13:21 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/11 13:38:06 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ int	path_manager_e(t_game *g)
 	j = g->y;
 	strr = ft_strdup(g->str);
 	array = ft_split(strr, '\n');
-	if (path_finder_e(g, array, i, j) == -1 || ft_pec(g, array) == -1)
+	if (path_finder_e(g, array, i, j) == -1)
 	{
 		free(strr);
 		free_array(array);
