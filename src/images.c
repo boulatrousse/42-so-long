@@ -6,11 +6,64 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:03:19 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/09 10:51:52 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/13 10:38:32 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+static void	ft_clear_images2(t_game *game)
+{	
+	if (game->exit_open)
+	{
+		mlx_destroy_image(game->mlx, game->exit_open);
+		game->exit_open = NULL;
+	}
+	if (game->perso)
+	{
+		mlx_destroy_image(game->mlx, game->perso);
+		game->perso = NULL;
+	}
+	if (game->perso_2)
+	{
+		mlx_destroy_image(game->mlx, game->perso_2);
+		game->perso_2 = NULL;
+	}
+	if (game->left)
+	{
+		mlx_destroy_image(game->mlx, game->left);
+		game->left = NULL;
+	}
+	if (game->right)
+	{
+		mlx_destroy_image(game->mlx, game->right);
+		game->right = NULL;
+	}
+}
+
+void	ft_clear_images(t_game *game)
+{
+	if (game->space)
+	{
+		mlx_destroy_image(game->mlx, game->space);
+		game->space = NULL;
+	}
+	if (game->wall)
+	{
+		mlx_destroy_image(game->mlx, game->wall);
+		game->wall = NULL;
+	}
+	if (game->collect)
+	{
+		mlx_destroy_image(game->mlx, game->collect);
+		game->collect = NULL;
+	}
+	if (game->exit)
+	{
+		mlx_destroy_image(game->mlx, game->exit);
+		game->exit = NULL;
+	}
+	ft_clear_images2(game);
+}
 
 void	check_images(t_game *game)
 {
@@ -47,28 +100,6 @@ void	init_images(t_game *game)
 	game->right = mlx_xpm_file_to_image(game->mlx, "./images/right.xpm", \
 										&game->pix, &game->pix);
 	check_images(game);
-}
-
-void	ft_clear_images(t_game *game)
-{
-	if (game->space)
-		mlx_destroy_image(game->mlx, game->space);
-	if (game->wall)
-		mlx_destroy_image(game->mlx, game->wall);
-	if (game->collect)
-		mlx_destroy_image(game->mlx, game->collect);
-	if (game->exit)
-		mlx_destroy_image(game->mlx, game->exit);
-	if (game->exit_open)
-		mlx_destroy_image(game->mlx, game->exit_open);
-	if (game->perso)
-		mlx_destroy_image(game->mlx, game->perso);
-	if (game->perso_2)
-		mlx_destroy_image(game->mlx, game->perso_2);
-	if (game->left)
-		mlx_destroy_image(game->mlx, game->left);
-	if (game->right)
-		mlx_destroy_image(game->mlx, game->right);
 }
 
 void	window_display(t_game *g, int i, int j)
