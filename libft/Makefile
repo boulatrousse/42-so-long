@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:06:34 by lboulatr          #+#    #+#              #
-#    Updated: 2023/02/16 14:49:23 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/02/16 15:40:46 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,9 +38,7 @@ NAME                    = libft.a
 
 LIB                     = ar rc
 
-RM                      = rm -f
-
-RM_RF                   = rm -rf
+RM                      = rm -rf
 
 $(BUILD_DIR)%.o:        %.c ${HEAD} Makefile
 	 					    @mkdir -p $(@D)
@@ -53,7 +51,7 @@ ${NAME}:    		    ${OBJS} Makefile
 
 clean:
 					        ${RM} ${OBJS}
-						    $(RM_RF) $(BUILD_DIR)
+						    $(RM) $(BUILD_DIR)
 
 fclean:    			    clean
 						    ${RM} ${NAME}
