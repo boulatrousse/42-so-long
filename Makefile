@@ -1,4 +1,7 @@
-.PHONY:     			all $(NAME) clear mkbuild lib minilibx clear clean fclean re sanitize
+.PHONY:     			all $(NAME) clear mkbuild lib minilibx clean fclean re
+
+GREEN					= \033[0;32m
+END						= \033[0m
 
 NAME					= so_long
 
@@ -44,23 +47,24 @@ $(BUILD_DIR)%.o:		$(DIR)%.c $(HEADER_DIR)/$(HEADER_FILE)
 							$(GCC) $(CFLAGS) -I$(HEADER_DIR) -I$(LIB_DIR) -I$(MINILIB_DIR) -I/usr/include -O3 -c $< -o $@ -g
 
 all: 					clear mkbuild lib minilibx $(HEADER_DIR) $(NAME) 
-						
+							@echo "$(GREEN)[SO_LONG IS READY] $(END)"
+							
 mkbuild:
 							@mkdir -p build
 
 clear:
 							$(CLEAR)
 						
-$(NAME): 				$(OBJECTS) $(LIB_DIR)$(LIBFT)
-							$(GCC) $(OBJECTS) -o $(NAME) $(LIB_DIR)$(LIBFT) $(MINILIB_DIR)$(MINILIB) ft_printf/libftprintf.a get_next_line/gnl.a $(LINUX) -g
-
-sanitize :				$(OBJECTS) $(LIB_DIR)$(LIBFT)
-							$(GCC) $(SANITIZE) $(OBJECTS) -o $(NAME) $(LIB_DIR)$(LIBFT) $(MINILIB_DIR)$(MINILIB) ft_printf/libftprintf.a get_next_line/gnl.a $(LINUX)
-
+$(NAME): 				$(OBJECTS) $(LIB_DIR)$(LIBFT) Makefile
+							@$(GCC) $(OBJECTS) -o $(NAME) $(LIB_DIR)$(LIBFT) $(MINILIB_DIR)$(MINILIB) ft_printf/libftprintf.a get_next_line/gnl.a $(LINUX) -g
+							
 lib:
 							@make -C $(LIB_DIR)
+							@echo "$(GREEN)[LIBFT OK] $(END)"
 							@make -C ft_printf/
+							@echo "$(GREEN)[FT_PRINTF OK] $(END)"
 							@make -C get_next_line/
+							@echo "$(GREEN)[GNL OK] $(END)"
 
 
 minilibx:
@@ -73,12 +77,15 @@ clean:
 							@make clean -C ft_printf/
 							@make clean -C get_next_line/
 							@${RM} $(BUILD_DIR)
+							@echo "$(GREEN)[CLEAN] done $(END)"
 
 fclean:					clean
 							@${RM} ${NAME}
 							@make fclean -C $(LIB_DIR)
 							@make fclean -C ft_printf/
 							@make fclean -C get_next_line/
+							@echo "$(GREEN)[FCLEAN] done $(END)"
 
 re:						fclean all
 							$(MAKE) all
+							@echo "$(GREEN)[REMAKE DONE] $(END)"

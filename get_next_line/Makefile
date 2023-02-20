@@ -6,44 +6,44 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 14:03:43 by lboulatr          #+#    #+#              #
-#    Updated: 2023/01/23 14:43:55 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/02/20 14:37:12 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	= get_next_line.c \
-			get_next_line_utils.c \
+SRCS					= get_next_line.c \
+							get_next_line_utils.c \
 
-OBJS    =    ${SRCS:.c=.o}
+OBJS    				=   ${SRCS:.c=.o}
 
-CC		=	gcc
+CC						=	gcc
 
-FLAGS    =    -Wall -Wextra -Werror
+FLAGS    				=   -Wall -Wextra -Werror
 
-HEADER    =    get_next_line/
+HEADER    				=   get_next_line/
 
-LIB        =    ar rc
+LIB        				=   ar rc
 
-RM        =    rm -f
+RM        				=   rm -f
 
-NAME    =    gnl.a
+NAME    				=   gnl.a
 
-all:        ${NAME} Makefile
+all:        			${NAME} Makefile
 
-%.o:        %.c ${HEADER} Makefile
-			${CC} ${FLAGS} -I${HEADER} -c $< -o $@
+%.o:        			%.c ${HEADER} Makefile
+							${CC} ${FLAGS} -I${HEADER} -c $< -o $@
 
-${NAME}:    ${OBJS}
-			${LIB} ${NAME} ${OBJS}
+${NAME}:    			${OBJS}
+								${LIB} ${NAME} ${OBJS}
 
-bonus:        ${B_OBJS} ${OBJS}
-			${LIB} ${NAME} ${OBJS} ${B_OBJS}
+bonus:        			${OBJS}
+								${LIB} ${NAME} ${OBJS}
 
 clean:
-			${RM} ${OBJS} ${B_OBJS}
+							${RM} ${OBJS}
 
-fclean:        clean
-			${RM} ${NAME}
+fclean:        			clean
+							${RM} ${NAME}
 
-re:            fclean all
+re:            			fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY: all clean fclean re

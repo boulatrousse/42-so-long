@@ -6,52 +6,54 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:06:34 by lboulatr          #+#    #+#              #
-#    Updated: 2022/11/20 14:26:02 by lboulatr         ###   ########lyon.fr    #
+#    Updated: 2023/02/20 13:54:26 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS    =    ft_isascii.c    ft_memcmp.c    ft_putendl_fd.c    ft_strdup.c    ft_strlen.c    ft_substr.c    \
-            ft_bzero.c    ft_isdigit.c    ft_memcpy.c    ft_putnbr_fd.c    ft_striteri.c    ft_strmapi.c    ft_tolower.c    \
-            ft_calloc.c    ft_isprint.c    ft_memmove.c    ft_putstr_fd.c    ft_strjoin.c    ft_strnstr.c    ft_toupper.c    \
-            ft_isalnum.c    ft_itoa.c    ft_memset.c    ft_split.c    ft_strlcat.c    ft_strrchr.c    ft_isalpha.c    \
-            ft_memchr.c    ft_putchar_fd.c    ft_strchr.c    ft_strlcpy.c    ft_strtrim.c    ft_strncmp.c    ft_atoi.c
+.PHONY: all clean fclean re bonus
 
-OBJS    =    ${SRCS:.c=.o}
+SRCS                    = ft_atoi.c    ft_isascii.c    ft_memcmp.c    ft_putendl_fd.c \
+                        ft_strdup.c    ft_strlen.c    ft_substr.c    ft_bzero.c    ft_isdigit.c \
+                        ft_memcpy.c    ft_putnbr_fd.c    ft_striteri.c    ft_strmapi.c \
+                        ft_tolower.c    ft_calloc.c    ft_isprint.c    ft_memmove.c \
+                        ft_putstr_fd.c    ft_strjoin.c    ft_strnstr.c    ft_toupper.c \
+                        ft_isalnum.c    ft_itoa.c    ft_memset.c    ft_split.c    ft_strlcat.c \
+                        ft_strrchr.c    ft_isalpha.c    ft_memchr.c    ft_putchar_fd.c \
+                        ft_strchr.c    ft_strlcpy.c    ft_strtrim.c    ft_strncmp.c \
+                        ft_lstsize.c    ft_lstadd_front.c    ft_lstnew.c    ft_lstlast.c \
+                        ft_lstadd_back.c    ft_lstdelone.c    ft_lstclear.c    ft_lstiter.c \
+                        ft_lstmap.c
 
-B_SRCS    =    ft_lstsize.c    ft_lstnew.c    ft_lstlast.c    ft_lstadd_front.c    ft_lstadd_back.c    ft_lstdelone.c    \
-            ft_lstclear.c    ft_lstiter.c    ft_lstmap.c
+OBJS                    = $(SRCS:%.c=$(BUILD_DIR)%.o)
 
-B_OBJS    =     ${B_SRCS:.c=.o}
+BUILD_DIR               = build/
 
-CC        =    gcc
+CC                      = cc
 
-FLAGS    =    -Wall -Wextra -Werror
+HEAD                    = include/libft.h
 
-HEADER    =    include/
+FLAGS                   = -Wall -Wextra -Werror
 
-LIB        =    ar rc
+NAME                    = libft.a
 
-RM        =    rm -f
+LIB                     = ar rc
 
-NAME    =    libft.a
+RM                      = rm -rf
 
-all:        ${NAME} Makefile
+$(BUILD_DIR)%.o:        %.c ${HEAD} Makefile
+	 					    @mkdir -p $(@D)
+						    @${CC} ${FLAGS} -include${HEAD} -c $< -o $@
 
-%.o:        %.c ${HEADER} Makefile
-			${CC} ${FLAGS} -I ${HEADER} -c $< -o $@
+all:    			    ${NAME}    Makefile
 
-${NAME}:    ${OBJS}
-			${LIB} ${NAME} ${OBJS}
-
-bonus:        ${B_OBJS} ${OBJS}
-			${LIB} ${NAME} ${OBJS} ${B_OBJS}
+${NAME}:    		    ${OBJS} Makefile
+					        ${LIB} ${NAME} ${OBJS} 
 
 clean:
-			${RM} ${OBJS} ${B_OBJS}
+					        ${RM} ${OBJS}
+						    $(RM) $(BUILD_DIR)
 
-fclean:        clean
-			${RM} ${NAME}
+fclean:    			    clean
+						    ${RM} ${NAME}
 
-re:            fclean all
-
-.PHONY: all clean fclean re bonus
+re:                     all fclean
