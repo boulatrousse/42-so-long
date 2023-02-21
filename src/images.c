@@ -6,11 +6,12 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:03:19 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/13 11:57:45 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/21 11:06:55 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 static void	ft_clear_images2(t_game *game)
 {	
 	if (game->exit_open)
