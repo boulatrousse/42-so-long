@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:54:04 by lboulatr          #+#    #+#              #
-#    Updated: 2023/02/22 14:01:45 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/02/22 15:57:01 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,16 +33,16 @@ LIB 							= ar rc
 
 RM 								= rm -rf
 
-$(BUILD_DIR)%.o:				%.c $(HEADER) libft
+$(BUILD_DIR)%.o:				%.c $(HEADER)
 									@mkdir -p $(@D)
 									$(CC) $(FLAGS) -include $(HEADER) -c $< -o $@
 	
-all:							${NAME} Makefile libft
+all:							  libft ${NAME}
 
 libft:
 									make -C libft
 
-${NAME}:						libft ${OBJS} Makefile
+${NAME}:						 ${OBJS} 
 									cp libft/libft.a ./${NAME}
 									${LIB} ${NAME} ${OBJS}
 

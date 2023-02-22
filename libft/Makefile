@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/07 13:06:34 by lboulatr          #+#    #+#              #
-#    Updated: 2023/02/20 14:37:06 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/02/22 16:03:27 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,13 +40,13 @@ LIB                     = ar rc
 
 RM                      = rm -rf
 
-$(BUILD_DIR)%.o:        %.c ${HEAD} Makefile
+$(BUILD_DIR)%.o:        %.c ${HEAD}
 	 					    @mkdir -p $(@D)
 						    ${CC} ${FLAGS} -include${HEAD} -c $< -o $@
 
-all:    			    ${NAME}    Makefile
+all:    			    ${NAME}   
 
-${NAME}:    		    ${OBJS} Makefile
+${NAME}:    		    ${OBJS}
 					        ${LIB} ${NAME} ${OBJS} 
 
 clean:
