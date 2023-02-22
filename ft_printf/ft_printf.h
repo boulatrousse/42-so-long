@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 14:53:52 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/16 15:26:41 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:03:10 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include "libft/include/libft.h"
 
 int		ft_printf(const char *str, ...);
 int		ft_hexa(unsigned int nbr, int check, char *base, int *x);
@@ -25,5 +24,8 @@ int		ft_putchar_fd_count(char c, int fd);
 int		count(long long int n);
 int		ft_putstr_fd_count(char *s, int fd);
 int		ft_putnbr_fd_count(int n, int fd);
+void	ft_putchar_fd_pf(char c, int fd);
+void	ft_putstr_fd_pf(char *s, int fd);
+void	ft_putnbr_fd_pf(int n, int fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 11:06:03 by lboulatr          #+#    #+#             */
-/*   Updated: 2022/11/24 13:57:56 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/22 17:01:47 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static void	ft_putnbr_fd_usign_bis(unsigned int n, int fd)
 	else
 	{
 		if (n >= 0 && n <= 9)
-			ft_putchar_fd(n + 48, fd);
+			ft_putchar_fd_pf(n + 48, fd);
 		else if (n < 0)
 		{
-			ft_putchar_fd('-', fd);
+			ft_putchar_fd_pf('-', fd);
 			ft_putnbr_fd_usign(n * (-1), fd);
 		}
 		else

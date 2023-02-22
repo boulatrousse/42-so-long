@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 15:06:35 by lboulatr          #+#    #+#             */
-/*   Updated: 2022/11/25 11:13:58 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/22 16:58:49 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,26 @@ static int	ft_sort_args(const char *str, va_list args, size_t i)
 		return (ft_putchar_fd_count(str[i + 1], 1));
 	else
 		return (-1);
+}
+
+int	count(long long int n)
+{
+	int	i;
+
+	i = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+	{
+		n *= -1;
+		i++;
+	}
+	while (n >= 1)
+	{
+		n /= 10;
+		i++;
+	}
+	return (i);
 }
 
 int	ft_printf(const char *str, ...)
