@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/24 15:16:16 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/01/29 13:53:55 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/22 11:19:44 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # endif
 
 char	*get_next_line(int fd);
-void	ft_cut_buffer(char *str);
 void	*ft_free(char *str);
 int		ft_strchr_n(char *str);
 int		ft_strlen_gnl(char *str);

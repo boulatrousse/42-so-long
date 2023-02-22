@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 13:47:16 by lboulatr          #+#    #+#             */
-/*   Updated: 2022/11/24 13:57:52 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/22 14:05:00 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,3 +38,4 @@ int	ft_putnbr_fd_count(int n, int fd)
 	ft_putnbr_fd_count_bis(n, fd);
 	return (count(n));
 }
+

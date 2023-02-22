@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:32:33 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/09 11:04:25 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/22 10:46:34 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,28 @@ int	is_charset2(int c, t_col *col)
 	if (c == 'E' && col->count != 0)
 		return (-1);
 	return (0);
+}
+
+void	ft_exit(t_game *g)
+{
+	if (g->str)
+		free(g->str);
+	if (g->array)
+		free_array(g->array);
+	ft_clear_images(g);
+	mlx_clear_window(g->mlx, g->window);
+	mlx_destroy_window(g->mlx, g->window);
+	mlx_destroy_display(g->mlx);
+	free(g->mlx);
+	exit(EXIT_SUCCESS);
+}
+
+int	ft_strlen_sl(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
 }

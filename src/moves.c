@@ -6,13 +6,13 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 11:30:07 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/01/29 13:31:16 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/22 11:39:21 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	ft_w(t_game *g)
+static void	move_up(t_game *g)
 {
 	if (g->array[g->x - 1][g->y] == 'E' && (g->ct_col != g->allcol))
 		return ;
@@ -32,7 +32,7 @@ static void	ft_w(t_game *g)
 	ft_printf("Moves : %d\n", g->move);
 }
 
-static void	ft_s(t_game *g)
+static void	move_down(t_game *g)
 {
 	if (g->array[g->x + 1][g->y] == 'E' && (g->ct_col != g->allcol))
 		return ;
@@ -52,7 +52,7 @@ static void	ft_s(t_game *g)
 	ft_printf("Moves : %d\n", g->move);
 }
 
-static void	ft_a(t_game *g)
+static void	move_left(t_game *g)
 {
 	if (g->array[g->x][g->y - 1] == 'E' && (g->ct_col != g->allcol))
 		return ;
@@ -72,7 +72,7 @@ static void	ft_a(t_game *g)
 	ft_printf("Moves : %d\n", g->move);
 }
 
-static void	ft_d(t_game *g)
+static void	move_right(t_game *g)
 {
 	if (g->array[g->x][g->y + 1] == 'E' && (g->ct_col != g->allcol))
 		return ;
@@ -94,16 +94,16 @@ static void	ft_d(t_game *g)
 
 int	ft_moves(int key_code, t_game *g)
 {
-	if (key_code == 65307)
+	if (key_code == KEY_ESC)
 		ft_exit(g);
-	if (key_code == 119 && (g->array[g->x - 1][g->y] != '1'))
-		ft_w(g);
-	if (key_code == 115 && (g->array[g->x + 1][g->y] != '1'))
-		ft_s(g);
-	if (key_code == 97 && (g->array[g->x][g->y - 1] != '1'))
-		ft_a(g);
-	if (key_code == 100 && (g->array[g->x][g->y + 1] != '1'))
-		ft_d(g);
+	if (key_code == KEY_UP && (g->array[g->x - 1][g->y] != '1'))
+		move_up(g);
+	if (key_code == KEY_DOWN && (g->array[g->x + 1][g->y] != '1'))
+		move_down(g);
+	if (key_code == KEY_LEFT && (g->array[g->x][g->y - 1] != '1'))
+		move_left(g);
+	if (key_code == KEY_RIGHT && (g->array[g->x][g->y + 1] != '1'))
+		move_right(g);
 	if (g->ct_col == g->allcol)
 		mlx_put_image_to_window(g->mlx, g->window, g->exit_open, \
 		(g->y_exit * g->pix), (g->x_exit * g->pix));

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:16:45 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/09 11:13:34 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/22 10:36:59 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include "../ft_printf/ft_printf.h"
 # include "../libft/include/libft.h"
 # include "../minilibx_linux/mlx.h"
+# define KEY_ESC 	65307
+# define KEY_UP 	119
+# define KEY_DOWN	115
+# define KEY_LEFT	97
+# define KEY_RIGHT	100 
 
 //--------------------- STRUCT ----------------------
 
@@ -118,7 +123,7 @@ int		is_charset2(int c, t_col *col);
 int		ft_strlen_sl(char *str);
 int		ft_count_lines(char *argvone);
 int		ft_count_rows(char *argvone, int lines, int fd, int i);
-int		collectible(t_game *g, int i, int j);
+int		count_collectible(t_game *g, int i, int j);
 void	ft_exit(t_game *g);
 int		ft_close_win(t_game *g);
 
