@@ -6,42 +6,19 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 10:35:56 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/09 10:55:46 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:33:26 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	col_count(char **array)
-{
-	int		i;
-	int		j;
-	int		count;
-
-	i = 0;
-	j = 0;
-	count = 0;
-	while (array[i])
-	{
-		while (array[i][j])
-		{
-			if (array[i][j] == 'C')
-				count++;
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	return (count);
-}
-
-void	init_struct_collec(t_game *g, t_col *col, char **array)
+void	init_struct_collec(t_game *g, t_col *col)
 {
 	col->x = 0;
 	col->y = 0;
 	col->x_perso = g->x;
 	col->y_perso = g->y;
-	col->count = col_count(array);
+	col->count = count_collectible(g);
 }
 
 int	ft_check_col(char **array, t_col *col)
@@ -62,7 +39,7 @@ int	ft_check_col(char **array, t_col *col)
 	return (0);
 }
 
-int	ft_pec(t_game *g, char **array)
+int	check_trap(t_game *g, char **array)
 {
 	int		a;
 
@@ -78,4 +55,10 @@ int	ft_pec(t_game *g, char **array)
 	if (a == 4)
 		return (-1);
 	return (0);
+}
+
+void	free_pathfinding_c(char *str, char **array)
+{
+	free(str);
+	free_array(array);
 }

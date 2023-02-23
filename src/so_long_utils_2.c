@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 13:32:33 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/22 10:46:34 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:46:41 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	is_charset(int c)
 	return (0);
 }
 
-int	is_charset2(int c, t_col *col)
+int	is_charset_col(int c, t_col *col)
 {
 	if (c == 'C' || c == '0' || c == 'P')
 		return (1);

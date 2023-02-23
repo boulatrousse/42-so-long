@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 11:45:50 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/11 13:38:06 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:59:22 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,20 +91,24 @@ int	path_manager_e(t_game *g)
 {
 	int		i;
 	int		j;
-	char	*strr;
+	char	*tmp_str;
 	char	**array;
 
 	i = g->x;
 	j = g->y;
-	strr = ft_strdup(g->str);
-	array = ft_split(strr, '\n');
+	tmp_str = ft_strdup(g->str);
+	if (!tmp_str)
+		return (-1);
+	array = ft_split(tmp_str, '\n');
+	if (!array)
+		return (free(tmp_str), -1);
 	if (path_finder_e(g, array, i, j) == -1)
 	{
-		free(strr);
+		free(tmp_str);
 		free_array(array);
 		return (-1);
 	}
-	free(strr);
+	free(tmp_str);
 	free_array(array);
 	return (0);
 }

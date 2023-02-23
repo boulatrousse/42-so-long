@@ -6,29 +6,33 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:15:15 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/22 11:38:06 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/23 16:43:01 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_collectible(t_game *g, int i, int j)
+int	count_collectible(t_game *g)
 {
-	int		x;
+	int		count;
+	int		i;
+	int		j;
 
-	x = 0;
+	count = 0;
+	i = 0;
+	j = 0;
 	while (g->array[i])
 	{
 		while (g->array[i][j])
 		{
 			if (g->array[i][j] == 'C')
-				x++;
+				count++;
 			j++;
 		}
 		j = 0;
 		i++;
 	}
-	return (x);
+	return (count);
 }
 
 int	ft_count_lines(char *argvone)

@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:32:49 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/22 11:51:46 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/23 17:00:16 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void	init_path_finding(t_game *game, char *argvone)
 		display_error(game, 3);
 	if (path_manager_c(game) == -1)
 		display_error(game, 4);
-	game->allcol = count_collectible(game, 0, 0);
+	game->allcol = count_collectible(game);
 }
 
 static void	init_window(t_game *game)
