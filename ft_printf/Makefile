@@ -6,7 +6,7 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/23 15:54:04 by lboulatr          #+#    #+#              #
-#    Updated: 2023/02/22 17:04:02 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/02/23 14:39:29 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ $(BUILD_DIR)%.o:				%.c $(HEADER)
 	
 all:							 ${NAME}
 
-${NAME}:						 ${OBJS} 
+${NAME}:						 ${OBJS} $(HEADER)
 									${LIB} ${NAME} ${OBJS}
 
 clean:	
@@ -51,4 +51,4 @@ fclean:							clean
 
 re:								fclean all
 
-.PHONY:	all clean fclean re libft
+.PHONY:	all clean fclean re

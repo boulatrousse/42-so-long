@@ -6,14 +6,16 @@
 #    By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/23 14:03:43 by lboulatr          #+#    #+#              #
-#    Updated: 2023/02/22 16:14:50 by lboulatr         ###   ########.fr        #
+#    Updated: 2023/02/23 14:39:47 by lboulatr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS					= get_next_line.c \
+SRCS					= 	get_next_line.c \
 							get_next_line_utils.c \
 
-OBJS    				=   ${SRCS:.c=.o}
+OBJS    				=   ${SRCS:%.c=$(BUILD)%.o}
+
+BUILD 					= 	build/
 
 CC						=	gcc
 
@@ -23,23 +25,22 @@ HEADER    				=   get_next_line.h
 
 LIB        				=   ar rc
 
-RM        				=   rm -f
+RM        				=   rm -rf
 
 NAME    				=   gnl.a
 
 all:        			${NAME}
 
-%.o:        			%.c ${HEADER}
+$(BUILD)%.o:        	%.c ${HEADER}
+							@mkdir -p $(@D)
 							${CC} ${FLAGS} -include ${HEADER} -c $< -o $@
 
 ${NAME}:    			${OBJS} ${HEADER}
-								${LIB} ${NAME} ${OBJS}
-
-bonus:        			${OBJS}
-								${LIB} ${NAME} ${OBJS}
+							${LIB} ${NAME} ${OBJS}
 
 clean:
 							${RM} ${OBJS}
+							$(RM) $(BUILD)
 
 fclean:        			clean
 							${RM} ${NAME}
