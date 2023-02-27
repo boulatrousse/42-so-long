@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:05:46 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/22 15:38:04 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/27 10:18:56 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ void	ft_errors(int x)
 	if (x == -4)
 		ft_putstr_fd("Error\nWrong map format.\n", STDERR_FILENO);
 	if (x == -5)
-		ft_putstr_fd("Error\nMap doesn't exist.\n", STDERR_FILENO);
+	{
+		ft_putstr_fd("Error\nMap doesn't exist or is empty.\n", STDERR_FILENO);
+		exit(EXIT_FAILURE);
+	}
 }
