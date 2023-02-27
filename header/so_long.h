@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:16:45 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/23 17:34:21 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:11:10 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,16 @@ typedef struct s_game
 
 void	free_array(char **array);
 char	*one_str(char *argvone, t_game *g, int fd, int x);
-char	**ft_array(char *str, t_game *g);
+char	**ft_array(char *str);
 
 //------------------ ERRORS & MAP -------------------
 
-int		check_map(char **array, char *argvone, int lines);
-void	display_error(t_game *g, int x);
-void	ft_errors(int x);
+int		check_map(char **array, char *argvone, int lines, char *str);
+void	display_error(char *str);
+void	free_strings(t_game *game);
+void	free_mlx(t_game *game);
+void	free_window(t_game *game);
+void	map_format_error(char *str, char **array);
 
 //--------------------- COORD -----------------------
 
@@ -104,7 +107,7 @@ void	init_struct_collec(t_game *g, t_col *col);
 //--------------------- IMAGES ---------------------
 
 void	check_images(t_game *game);
-void	ft_clear_images(t_game *game);
+void	ft_clear_images_character(t_game *game);
 void	window_display(t_game *game, int i, int j);
 
 //--------------------- PATH FINDING -----------------

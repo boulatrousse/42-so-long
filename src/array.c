@@ -6,13 +6,13 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 10:19:05 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/23 17:40:38 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:23:30 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	free_gnl(char *tmp, char *gnl, char *str, t_game *g)
+static void	free_gnl(char *tmp, char *gnl, char *str)
 {
 	if (str)
 		free(str);
@@ -21,7 +21,7 @@ static void	free_gnl(char *tmp, char *gnl, char *str, t_game *g)
 		free(gnl);
 		free(tmp);
 	}
-	display_error(g, 6);
+	display_error("Error\nMalloc error.\n");
 }
 
 char	*one_str(char *argvone, t_game *g, int fd, int x)
@@ -33,19 +33,19 @@ char	*one_str(char *argvone, t_game *g, int fd, int x)
 	x = g->lines - 1;
 	fd = open(argvone, O_RDONLY);
 	if (fd < 0 || fd > 1023)
-		display_error(g, 6);
+		display_error("Error\nFD error.\n");
 	str = get_next_line(fd);
 	if (!str)
-		display_error(g, 6);
+		display_error("Error\nMalloc error.\n");
 	while (x != 0)
 	{
 		tmp = str;
 		gnl = get_next_line(fd);
 		if (!gnl)
-			free_gnl(tmp, gnl, str, g);
+			free_gnl(tmp, gnl, str);
 		str = ft_strjoin(tmp, gnl);
 		if (!str)
-			free_gnl(tmp, gnl, str, g);
+			free_gnl(tmp, gnl, str);
 		free(gnl);
 		free(tmp);
 		x--;
@@ -53,7 +53,7 @@ char	*one_str(char *argvone, t_game *g, int fd, int x)
 	return (close(fd), str);
 }
 
-char	**ft_array(char *str, t_game *g)
+char	**ft_array(char *str)
 {
 	char	**array;
 
@@ -61,7 +61,7 @@ char	**ft_array(char *str, t_game *g)
 	if (!array)
 	{
 		free(str);
-		display_error(g, 6);
+		display_error("Error\nMalloc error.\n");
 	}
 	return (array);
 }

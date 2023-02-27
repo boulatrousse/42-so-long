@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:02:36 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/09 10:58:17 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:10:10 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,27 +94,30 @@ static int	check_letters(char **array)
 	return (0);
 }
 
-int	check_map(char **array, char *argvone, int lines)
+int	check_map(char **array, char *argvone, int lines, char *str)
 {
 	int		i;
 
 	i = 0;
 	if (check_char(array, 0, 0) == -1)
-		return (-1);
+		return (free(str), free_array(array), \
+				display_error("Error\nE, C or P error.\n"), -1);
 	if (check_wall(array, lines, 1, 0) == -1
 		|| check_wall_first_last(array, lines, 0))
-		return (-2);
+		return (free(str), free_array(array), \
+				display_error("Error\nWall error.\n"), -1);
 	if (check_letters(array) == -1)
-		return (-3);
+		return (free(str), free_array(array), \
+				display_error("Error\nUnknow letter in the map.\n"), -1);
 	while (argvone[i] != '.')
 		i++;
 	if (argvone[i + 1] != 'b')
-		return (-4);
+		return (map_format_error(str, array), -1);
 	if (argvone[i + 2] != 'e')
-		return (-4);
+		return (map_format_error(str, array), -1);
 	if (argvone[i + 3] != 'r')
-		return (-4);
+		return (map_format_error(str, array), -1);
 	if (argvone[i + 4] != '\0')
-		return (-4);
+		return (map_format_error(str, array), -1);
 	return (0);
 }

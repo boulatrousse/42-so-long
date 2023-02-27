@@ -5,98 +5,64 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/24 10:15:15 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/27 10:18:49 by lboulatr         ###   ########.fr       */
+/*   Created: 2023/01/28 13:32:33 by lboulatr          #+#    #+#             */
+/*   Updated: 2023/02/27 17:17:34 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	count_collectible(t_game *g)
+int	char_is_ok(int c)
 {
-	int		count;
-	int		i;
-	int		j;
-
-	count = 0;
-	i = 0;
-	j = 0;
-	while (g->array[i])
-	{
-		while (g->array[i][j])
-		{
-			if (g->array[i][j] == 'C')
-				count++;
-			j++;
-		}
-		j = 0;
-		i++;
-	}
-	return (count);
+	if (c == '0')
+		return (0);
+	else if (c == '1')
+		return (0);
+	else if (c == 'P')
+		return (0);
+	else if (c == 'E')
+		return (0);
+	else if (c == 'C')
+		return (0);
+	return (-1);
 }
 
-int	ft_count_lines(char *argvone)
+int	is_charset(int c)
 {
-	int		count;
-	int		fd;
-	char	*str;
-
-	count = 0;
-	fd = open(argvone, O_RDONLY);
-	if (fd < 0 || fd > 1023)
-		return (-1);
-	str = get_next_line(fd);
-	if (!str)
-		return (-1);
-	free(str);
-	while (str != NULL)
-	{
-		count++;
-		str = get_next_line(fd);
-		if (!str)
-			break ;
-		free(str);
-	}
-	close(fd);
-	return (count);
-}
-
-static int	check_gnl(char *str, int fd, int i)
-{
-	str = get_next_line(fd);
-	if (!str)
-		exit(EXIT_FAILURE);
-	if (ft_strlen_sl(str) != i)
-		return (free(str), -1);
-	free(str);
+	if (c == 'C' || c == '0' || c == 'P' || c == 'E')
+		return (1);
 	return (0);
 }
 
-int	ft_count_rows(char *argvone, int lines, int fd, int i)
+int	is_charset_col(int c, t_col *col)
 {
-	char	*str;
+	if (c == 'C' || c == '0' || c == 'P')
+		return (1);
+	if (c == 'E' && col->count != 0)
+		return (-1);
+	return (0);
+}
 
-	fd = open(argvone, O_RDONLY);
-	if (fd < 0 || fd > 1023)
-		exit(EXIT_FAILURE);
-	str = get_next_line(fd);
-	if (!str)
-		exit(EXIT_FAILURE);
-	i = ft_strlen_sl(str);
-	free(str);
-	while (lines != 1)
-	{
-		if (check_gnl(str, fd, i) == -1)
-			return (-1);
-		lines--;
-	}
-	i--;
-	str = get_next_line(fd);
-	if (!str)
-		exit(EXIT_FAILURE);
-	if ((ft_strlen_sl(str)) != i)
-		return (free(str), -1);
-	free(str);
-	close(fd);
+void	ft_exit(t_game *g)
+{
+	if (g->str)
+		free(g->str);
+	if (g->array)
+		free_array(g->array);
+	ft_clear_images_character(g);
+	mlx_clear_window(g->mlx, g->window);
+	mlx_destroy_window(g->mlx, g->window);
+	mlx_destroy_display(g->mlx);
+	free(g->mlx);
+	exit(EXIT_SUCCESS);
+}
+
+int	ft_strlen_sl(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
 	return (i);
 }

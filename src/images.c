@@ -6,42 +6,13 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:03:19 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/21 11:06:55 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/27 17:28:34 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	ft_clear_images2(t_game *game)
-{	
-	if (game->exit_open)
-	{
-		mlx_destroy_image(game->mlx, game->exit_open);
-		game->exit_open = NULL;
-	}
-	if (game->perso)
-	{
-		mlx_destroy_image(game->mlx, game->perso);
-		game->perso = NULL;
-	}
-	if (game->perso_2)
-	{
-		mlx_destroy_image(game->mlx, game->perso_2);
-		game->perso_2 = NULL;
-	}
-	if (game->left)
-	{
-		mlx_destroy_image(game->mlx, game->left);
-		game->left = NULL;
-	}
-	if (game->right)
-	{
-		mlx_destroy_image(game->mlx, game->right);
-		game->right = NULL;
-	}
-}
-
-void	ft_clear_images(t_game *game)
+static void	ft_clear_images_map(t_game *game)
 {
 	if (game->space)
 	{
@@ -63,21 +34,53 @@ void	ft_clear_images(t_game *game)
 		mlx_destroy_image(game->mlx, game->exit);
 		game->exit = NULL;
 	}
-	ft_clear_images2(game);
+	if (game->exit_open)
+	{
+		mlx_destroy_image(game->mlx, game->exit_open);
+		game->exit_open = NULL;
+	}
+}
+
+void	ft_clear_images_character(t_game *game)
+{
+	if (game->perso)
+	{
+		mlx_destroy_image(game->mlx, game->perso);
+		game->perso = NULL;
+	}
+	if (game->perso_2)
+	{
+		mlx_destroy_image(game->mlx, game->perso_2);
+		game->perso_2 = NULL;
+	}
+	if (game->left)
+	{
+		mlx_destroy_image(game->mlx, game->left);
+		game->left = NULL;
+	}
+	if (game->right)
+	{
+		mlx_destroy_image(game->mlx, game->right);
+		game->right = NULL;
+	}
+	ft_clear_images_map(game);
 }
 
 void	check_images(t_game *game)
 {
-	if (game->space == NULL \
-		|| game->wall == NULL \
-		|| game->collect == NULL \
-		|| game->exit == NULL \
-		|| game->exit_open == NULL \
-		|| game->perso == NULL \
-		|| game->perso_2 == NULL
-		|| game->left == NULL \
+	if (game->space == NULL || game->wall == NULL \
+		|| game->collect == NULL || game->exit == NULL \
+		|| game->exit_open == NULL || game->perso == NULL \
+		|| game->perso_2 == NULL || game->left == NULL \
 		|| game->right == NULL)
-		display_error(game, 5);
+	{
+		free_strings(game);
+		ft_clear_images_map(game);
+		ft_clear_images_character(game);
+		free_window(game);
+		free_mlx(game);
+		display_error("Error\nThere's a problem with an image.\n");
+	}
 }
 
 void	init_images(t_game *game)
