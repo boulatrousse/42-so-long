@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 10:15:15 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/27 17:27:28 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/02/28 10:13:50 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,7 @@ int	ft_count_lines(char *argvone)
 			break ;
 		free(str);
 	}
-	close(fd);
-	return (count);
+	return (close(fd), count);
 }
 
 static int	check_gnl(char *str, int fd, int i)
@@ -96,7 +95,5 @@ int	ft_count_rows(char *argvone, int lines, int fd, int i)
 		display_error("Error\nMalloc error.\n");
 	if ((ft_strlen_sl(str)) != i)
 		return (free(str), -1);
-	free(str);
-	close(fd);
-	return (i);
+	return (free(str), close(fd), i);
 }

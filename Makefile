@@ -21,7 +21,7 @@ SRC			 			= main.c \
 							images.c \
 							init.c \
 							moves.c \
-							path_finding_c_utils.c \
+							path_finding_utils.c \
 							path_finding_c.c \
 							path_finding_e.c \
 							so_long_utils.c \
