@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 11:05:46 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/28 10:13:43 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/03/02 10:06:42 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	display_error(char *str)
 {
 	ft_putstr_fd(str, STDERR_FILENO);
+	close_fd();
 	exit(EXIT_FAILURE);
 }
 

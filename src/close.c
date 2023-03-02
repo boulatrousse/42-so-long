@@ -1,31 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   close.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/23 14:18:32 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/03/02 10:13:15 by lboulatr         ###   ########.fr       */
+/*   Created: 2023/03/02 10:12:04 by lboulatr          #+#    #+#             */
+/*   Updated: 2023/03/02 10:13:45 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int argc, char **argv)
+void	close_fd(void)
 {
-	t_game		game;
+	int		i;
 
-	if (argc == 1)
-		ft_putstr_fd("Error\nToo few arguments.\n", STDERR_FILENO);
-	if (argc == 2)
+	i = 0;
+	while (i <= 1023)
 	{
-		init_struct(&game, argv[1]);
-		mlx_hook(game.window, 2, 1L << 0, ft_moves, &game);
-		mlx_hook(game.window, 17, 1L << 17, ft_close_win, &game);
-		mlx_loop(game.mlx);
+		close(i);
+		i++;
 	}
-	if (argc > 2)
-		ft_putstr_fd("Error\nToo many arguments.\n", STDERR_FILENO);
+}
+
+int	ft_close_win(t_game *g)
+{
+	ft_exit(g);
 	return (0);
+}
+
+void	ft_exit(t_game *g)
+{
+	if (g->str)
+		free(g->str);
+	if (g->array)
+		free_array(g->array);
+	ft_clear_images_character(g);
+	mlx_clear_window(g->mlx, g->window);
+	mlx_destroy_window(g->mlx, g->window);
+	mlx_destroy_display(g->mlx);
+	free(g->mlx);
+	close_fd();
+	exit(EXIT_SUCCESS);
 }

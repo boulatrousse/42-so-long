@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:16:45 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/27 17:11:10 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/03/02 10:07:02 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ void	free_strings(t_game *game);
 void	free_mlx(t_game *game);
 void	free_window(t_game *game);
 void	map_format_error(char *str, char **array);
+void	close_fd(void);
 
 //--------------------- COORD -----------------------
 
