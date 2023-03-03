@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/29 10:14:07 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/28 10:16:33 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:27:15 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ int	path_manager_c(t_game *g)
 			return (free_pathfinding_c(col.tmp_str, col.array), -1);
 		free_array(col.array);
 		col.array = ft_split(col.tmp_str, '\n');
+		if (!col.array)
+			return (free(col.tmp_str), -1);
 		col.y++;
 		col.count--;
 	}

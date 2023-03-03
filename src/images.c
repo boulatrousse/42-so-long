@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 14:03:19 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/28 10:15:09 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:22:58 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	check_images(t_game *game)
 void	init_images(t_game *game)
 {
 	game->space = mlx_xpm_file_to_image(game->mlx, "./images/space.xpm", \
-										&game->pix, &game->pix);
+									&game->pix, &game->pix);
 	game->wall = mlx_xpm_file_to_image(game->mlx, "./images/wall.xpm", \
 										&game->pix, &game->pix);
 	game->collect = mlx_xpm_file_to_image(game->mlx, "./images/burger1.xpm", \

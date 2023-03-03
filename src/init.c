@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 13:32:49 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/02/28 10:15:14 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/03/03 11:24:29 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	init_int(t_game *game, char *argvone)
 
 static void	init_map(t_game *game, char *argvone)
 {
-	game->str = one_str(argvone, game, 0, 0);
+	game->str = one_str(argvone, 0, (game->lines - 1));
 	if (!game->str)
 		display_error("Error\nMalloc error.\n");
 	game->array = ft_array(game->str);

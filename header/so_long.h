@@ -6,7 +6,7 @@
 /*   By: lboulatr <lboulatr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 14:16:45 by lboulatr          #+#    #+#             */
-/*   Updated: 2023/03/02 10:07:02 by lboulatr         ###   ########.fr       */
+/*   Updated: 2023/03/03 10:50:17 by lboulatr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,13 @@ typedef struct s_col
 	char	**array;
 }	t_col;
 
+typedef struct s_onestr
+{
+	char	*str;
+	char	*tmp;
+	char	*gnl;
+}	t_onestr;
+
 typedef struct s_game
 {
 	int		lines;
@@ -76,7 +83,7 @@ typedef struct s_game
 //---------------------- ARRAY ----------------------
 
 void	free_array(char **array);
-char	*one_str(char *argvone, t_game *g, int fd, int x);
+char	*one_str(char *argvone, int fd, int x);
 char	**ft_array(char *str);
 
 //------------------ ERRORS & MAP -------------------
